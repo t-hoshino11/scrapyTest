@@ -21,6 +21,8 @@ class BooksSpider(scrapy.Spider):
         product = response.css("div.moveInfoBox")
         item["title"] = product.css("h1 ::text").extract_first()
         item["date"] = product.css("span.opn_date > strong ::text").extract_first()
+        item["checkin"] =product.css("div.mainBox > div.rateBox li#ci > a > strong ::text").extract_first()
+        item["ranking"] =product.css("div.mainBox > div.rateBox li#rk > a > strong ::text").extract_first()
         # item['category'] = response.xpath(
         #     "//ul[@class='breadcrumb']/li[@class='active']/preceding-sibling::li[1]/a/text()"
         # ).extract_first()
